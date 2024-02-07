@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:33:40 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 11:45:28 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:38:52 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "../libft/libft.h"
 
 # include "structure.h"
+
+int				bubble_sort(t_push_swap *push_swap);
 
 void			check_input(int argc, const char *argv[]);
 

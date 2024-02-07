@@ -6,11 +6,28 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 00:26:36 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/04 15:55:47 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:08:17 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
+
+void	check_duplicates(t_stack *stack)
+{
+	t_stack	*node;
+
+	while (stack)
+	{
+		node = stack->next;
+		while (node)
+		{
+			if (node->value == stack->value)
+				exit_with_error_message("Duplicates in input!");
+			node = node->next;
+		}
+		stack = stack->next;
+	}
+}
 
 t_push_swap	*init_push_swap(const char *argv[], int argc)
 {
@@ -28,5 +45,6 @@ t_push_swap	*init_push_swap(const char *argv[], int argc)
 		new_stack_back(&stacks->a, my_atoi((char *)argv[index]));
 		index++;
 	}
+	check_duplicates(stacks->a);
 	return (stacks);
 }

@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:04:10 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 11:57:14 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:19:43 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ long	my_atoi(char *str)
 		value += str[index] - '0';
 		index++;
 	}
+	if (value == 0)
+		neg = 1;
 	return (value * neg);
 }
 
