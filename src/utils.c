@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:04:10 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 10:01:22 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 11:57:14 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,30 @@ void	display_stack(const char *title, t_stack *stack)
 
 void	display_push_swap(t_push_swap *push_swap)
 {
-	display_stack("Stack A:", push_swap->a);
-	display_stack("Stack B:", push_swap->b);
+	t_stack	*a;
+	t_stack	*b;
+	int		index;
+
+	index = 1;
+	a = push_swap->a;
+	b = push_swap->b;
+	ft_printf("Stacks:\n");
+	ft_printf("--I----A-----B---\n");
+	while (a || b)
+	{
+		if (!a && b)
+			ft_printf("| %d |     |  %d  |\n", index, b->value);
+		else if (a && !b)
+			ft_printf("| %d |  %d  |     |\n", index, a->value);
+		else
+			ft_printf("| %d |  %d  |  %d  |\n", index, a->value, b->value);
+		if (a)
+			a = a->next;
+		if (b)
+			b = b->next;
+		index++;
+	}
+	ft_printf("-----------------\n");
 }
 
 void	new_stack_front(t_stack **stack, int value)

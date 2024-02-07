@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:33:40 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 11:29:08 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 11:45:28 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,27 @@ void			reverse_rotate(t_stack **stack);
 void			rotate(t_stack **stack);
 
 void			swap(t_stack **stack);
+
+void			sa(t_push_swap *push_swap);
+
+void			sb(t_push_swap *push_swap);
+
+void			ss(t_push_swap *push_swap);
+
+void			pa(t_push_swap *push_swap);
+
+void			pb(t_push_swap *push_swap);
+
+void			ra(t_push_swap *push_swap);
+
+void			rb(t_push_swap *push_swap);
+
+void			rr(t_push_swap *push_swap);
+
+void			rra(t_push_swap *push_swap);
+
+void			rrb(t_push_swap *push_swap);
+
+void			rrr(t_push_swap *push_swap);
 
 #endif

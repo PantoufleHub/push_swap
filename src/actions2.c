@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   actions2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 00:38:38 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 11:41:06 by aperron          ###   ########.fr       */
+/*   Created: 2024/02/07 11:36:34 by aperron           #+#    #+#             */
+/*   Updated: 2024/02/07 11:43:00 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	sa(t_push_swap *push_swap)
+void	ra(t_push_swap *push_swap)
 {
-	swap(&push_swap->a);
-	ft_printf("sa\n");
+	rotate(&push_swap->a);
+	ft_printf("ra\n");
 }
 
-void	sb(t_push_swap *push_swap)
+void	rb(t_push_swap *push_swap)
 {
-	swap(&push_swap->b);
-	ft_printf("sb\n");
+	rotate(&push_swap->b);
+	ft_printf("rb\n");
 }
 
-void	ss(t_push_swap *push_swap)
+void	rr(t_push_swap *push_swap)
 {
-	swap(&push_swap->a);
-	swap(&push_swap->b);
-	ft_printf("ss\n");
-}
-
-void	pa(t_push_swap *push_swap)
-{
-	push(&push_swap->b, &push_swap->a);
-	ft_printf("pa\n");
-}
-
-void	pb(t_push_swap *push_swap)
-{
-	push(&push_swap->a, &push_swap->b);
-	ft_printf("pb\n");
+	rotate(&push_swap->a);
+	rotate(&push_swap->b);
+	ft_printf("rr\n");
 }
