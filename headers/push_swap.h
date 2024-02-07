@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:33:40 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 09:51:39 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 11:29:08 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void			new_stack_back(t_stack **stack, int value);
 void			new_stack_front(t_stack **stack, int value);
 
 void			push(t_stack **src, t_stack **dest);
+
+void			reverse_rotate(t_stack **stack);
+
+void			rotate(t_stack **stack);
 
 void			swap(t_stack **stack);
 

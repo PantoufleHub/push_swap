@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:54:21 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 10:48:49 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 11:33:40 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	swap(t_stack **stack)
 	t_stack	*tmp;
 
 	if (!*stack || !(*stack)->next)
-		exit_with_error_message("Unable to swap stack!");
+		exit_with_error_message("Not enough elements to swap!");
 	tmp = (*stack)->next;
 	(*stack)->next = (*stack)->next->next;
 	tmp->next = (*stack);
@@ -62,12 +62,37 @@ void	push(t_stack **src, t_stack **dest)
 	*src = tmp;
 }
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack **stack)
 {
-	stack = NULL;
+	t_stack	*tmp;
+	t_stack	*last;
+
+	if (!*stack || !(*stack)->next)
+		exit_with_error_message("Not enough elements to rotate!");
+	tmp = *stack;
+	*stack = (*stack)->next;
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = tmp;
+	tmp->next = NULL;
 }
 
-void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack **stack)
 {
-	stack = NULL;
+	t_stack	*last;
+	t_stack	*new_last;
+
+	if (!stack || !(*stack)->next)
+		exit_with_error_message("Not enough elements to reverse rotate!");
+	last = *stack;
+	while (last->next)
+	{
+		if (!last->next->next)
+			new_last = last;
+		last = last->next;
+	}
+	last->next = *stack;
+	new_last->next = NULL;
+	*stack = last;
 }
