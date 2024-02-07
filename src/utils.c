@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:04:10 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/03 21:30:14 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/07 10:01:22 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,36 @@ long	my_atoi(char *str)
 		index++;
 	}
 	return (value * neg);
+}
+
+void	display_stack(const char *title, t_stack *stack)
+{
+	int	index;
+
+	index = 1;
+	ft_printf("%s\n", title);
+	ft_printf("--------------\n");
+	while (stack)
+	{
+		ft_printf("Value %d: %d\n", index, stack->value);
+		stack = stack->next;
+		index++;
+	}
+	ft_printf("--------------\n");
+}
+
+void	display_push_swap(t_push_swap *push_swap)
+{
+	display_stack("Stack A:", push_swap->a);
+	display_stack("Stack B:", push_swap->b);
+}
+
+void	new_stack_front(t_stack **stack, int value)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	new->value = value;
+	new->next = *stack;
+	*stack = new;
 }
