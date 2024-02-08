@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:04:10 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 14:19:43 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/08 11:44:50 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	display_stack(const char *title, t_stack *stack)
 {
 	int	index;
 
-	index = 1;
+	index = 0;
 	ft_printf("%s\n", title);
 	ft_printf("--------------\n");
 	while (stack)
@@ -69,7 +69,7 @@ void	display_push_swap(t_push_swap *push_swap)
 	t_stack	*b;
 	int		index;
 
-	index = 1;
+	index = 0;
 	a = push_swap->a;
 	b = push_swap->b;
 	ft_printf("Stacks:\n");
@@ -89,14 +89,4 @@ void	display_push_swap(t_push_swap *push_swap)
 		index++;
 	}
 	ft_printf("-----------------\n");
-}
-
-void	new_stack_front(t_stack **stack, int value)
-{
-	t_stack	*new;
-
-	new = malloc(sizeof(t_stack));
-	new->value = value;
-	new->next = *stack;
-	*stack = new;
 }

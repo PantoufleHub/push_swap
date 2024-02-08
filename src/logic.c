@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:03:57 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:43 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/08 11:17:40 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	nb_in_stack(t_stack	*stack)
 	return (count);
 }
 
-int	finished(t_push_swap *push_swap)
+int	is_finished(t_push_swap *push_swap)
 {
 	if (nb_in_stack(push_swap->b))
 		return (0);
@@ -70,27 +70,23 @@ int	index_smallest(t_stack *stack)
 	return (smallest_index);
 }
 
-int	bubble_sort(t_push_swap *push_swap)
+int	index_biggest(t_stack *stack)
 {
-	int	moves;
+	int	biggest;
+	int	biggest_index;
+	int	index;
 
-	moves = 0;
-	while (!finished(push_swap))
+	biggest = -2147483648;
+	index = 0;
+	while (stack)
 	{
-		if (push_swap->b && is_sorted(push_swap->a)
-			&& (!push_swap->a || push_swap->a->value > push_swap->b->value))
-			pa(push_swap);
-		else if (index_smallest(push_swap->a))
+		if (stack->value >= biggest)
 		{
-			if (index_smallest(push_swap->a) <= nb_in_stack(push_swap->a) / 2)
-				ra(push_swap);
-			else
-				rra(push_swap);
+			biggest = stack->value;
+			biggest_index = index;
 		}
-		else
-			pb(push_swap);
-		moves++;
-		display_push_swap(push_swap);
+		stack = stack->next;
+		index++;
 	}
-	return (moves);
+	return (biggest_index);
 }
