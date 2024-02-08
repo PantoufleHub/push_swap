@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:47:43 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/08 16:08:05 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/08 16:13:22 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
 // Get how many moves to push value at index in stack a
 // to correct position in stack b
 // returns positive if rotate negative if reverse rotate
-x
+// int	get_nb_moves(t_push_swap *push_swap, int index)
+// {
+	
+// }
 
 void	turk_sort(t_push_swap *push_swap)
 {
