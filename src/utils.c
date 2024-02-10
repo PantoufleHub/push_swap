@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:04:10 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/08 11:44:50 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:39:15 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,27 @@ long	my_atoi(char *str)
 	return (value * neg);
 }
 
-void	display_stack(const char *title, t_stack *stack)
+int	abs(int value)
 {
-	int	index;
+	if (value == -2147483648)
+		exit_with_error_message("Absolute value of -2147483648 too big");
+	if (value < 0)
+		return (-value);
+	else
+		return (value);
+}
 
-	index = 0;
-	ft_printf("%s\n", title);
-	ft_printf("--------------\n");
-	while (stack)
+int	get_big_small(int value1, int value2, int smallest)
+{
+	if (smallest == 1)
 	{
-		ft_printf("Value %d: %d\n", index, stack->value);
-		stack = stack->next;
-		index++;
+		if (value1 < value2)
+			return (value1);
+		return (value2);
 	}
-	ft_printf("--------------\n");
+	if (value1 > value2)
+		return (value1);
+	return (value2);
 }
 
 void	display_push_swap(t_push_swap *push_swap)

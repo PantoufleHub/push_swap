@@ -6,7 +6,7 @@
 #    By: aperron <aperron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/03 18:26:15 by aperron           #+#    #+#              #
-#    Updated: 2024/02/08 14:48:03 by aperron          ###   ########.fr        #
+#    Updated: 2024/02/10 18:01:28 by aperron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ NAME		= push_swap
 SRC_FOLDER	= ./src/
 LFT_FOLDER	= ./libft/
 
-SRCS_BLANK	= main input utils actions init stacks actions2 actions3 logic free logic2 logic3
+SRCS_BLANK	= main input utils actions init stacks actions2 actions3 logic \
+			free logic2 logic3 logic4
 		
 SRCS		= $(addsuffix .c, $(addprefix $(SRC_FOLDER), $(SRCS_BLANK)))
 
