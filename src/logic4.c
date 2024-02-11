@@ -6,68 +6,61 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:57:17 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/10 22:03:49 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 01:29:14 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-void	push_to_b2(t_push_swap *push_swap, int *arot, int *brot)
+void	push_to_b2(int *a_rotations, int *b_rotations, int atot, int btot)
 {
-	while (*arot != 0 && *brot != 0)
-	{
-		if (*arot < 0)
-		{
-			if (*brot < 0)
-			{
-				rrr(push_swap);
-				*brot += 1;
-			}
-			else
-				rra(push_swap);
-			*arot += 1;
-		}
-		else
-		{
-			if (*brot > 0)
-			{
-				rr(push_swap);
-				*brot -= 1;
-			}
-			else
-				ra(push_swap);
-			*arot -= 1;
-		}
-	}
+	int	opp_a;
+	int	opp_b;
+
+	// ft_printf("Entered b2\n");
+	// ft_printf("With values arot: %d, brot %d, atot: %d, btot: %d\n", *a_rotations, *b_rotations, atot, btot);
+	if (*a_rotations < 0 && *b_rotations < 0)
+		return ;
+	if (*a_rotations >= 0 && *b_rotations >= 0)
+		return ;
+	if (*a_rotations >= 0)
+		opp_a = *a_rotations - atot;
+	else
+		opp_a = atot - abs(*a_rotations);
+	if (*b_rotations >= 0)
+		opp_b = *b_rotations - btot;
+	else
+		opp_b = btot - abs(*b_rotations);
+	// ft_printf("End b2 with arot: %d, brot %d, oppa: %d, oppb: %d\n", *a_rotations, *b_rotations, opp_a, opp_b);
+	push_to_b3(a_rotations, b_rotations, opp_a, opp_b);
 }
 
 void	push_to_b(t_push_swap *push_swap, int index)
 {
 	int	a_rotations;
 	int	b_rotations;
+	int	atot;
+	int	btot;
 
+	// ft_printf("\n -- Pushing to B -- \n");
+	// display_push_swap(push_swap);
+	atot = nb_in_stack(push_swap->a);
+	btot = nb_in_stack(push_swap->b);
 	a_rotations = index;
 	if (index > nb_in_stack(push_swap->a) / 2)
 		a_rotations -= nb_in_stack(push_swap->a);
 	b_rotations = get_rotations(push_swap->b, value_index(push_swap->a, index));
-	push_to_b2(push_swap, &a_rotations, &b_rotations);
-	while (b_rotations != 0)
-	{
-		if (b_rotations > 0)
-		{
-			rb(push_swap);
-			b_rotations--;
-		}
-		else
-		{
-			rrb(push_swap);
-			b_rotations++;
-		}
-	}
+	// ft_printf("Index: %d, arot:%d, brot:%d\n", index, a_rotations, b_rotations);
+	push_to_b2(&a_rotations, &b_rotations, atot, btot);
+	push_to_b4(push_swap, a_rotations, b_rotations);
+	// ft_printf("Index: %d, Arot: %d, Brot: %d\n", index, a_rotations, b_rotations);
 	pb(push_swap);
+	// ft_printf("After push\n");
+	// display_push_swap(push_swap);
+	// ft_printf("\n");
 }
 
-int	get_ideal_indexa(t_stack *a, int value)
+int	get_ideal_index_a(t_stack *a, int value)
 {
 	int	index;
 	int	previous;
@@ -87,7 +80,7 @@ int	get_ideal_indexa(t_stack *a, int value)
 
 // Get how many rotations to b to get ideal value on top of b
 // positive if rotations negative if reverse rotations
-int	get_rotationsa(t_stack *a, int value)
+int	get_rotations_a(t_stack *a, int value)
 {
 	int	nb;
 
@@ -95,7 +88,7 @@ int	get_rotationsa(t_stack *a, int value)
 	if (value < smallest_value(a) || value > biggest_value(a))
 		nb = (index_smallest(a));
 	else
-		nb = get_ideal_indexa(a, value);
+		nb = get_ideal_index_a(a, value);
 	if (nb > nb_in_stack(a) / 2)
 		nb -= nb_in_stack(a);
 	return (nb);
@@ -107,7 +100,7 @@ void	push_to_a(t_push_swap *push_swap)
 
 	while (nb_in_stack(push_swap->b))
 	{
-		a_rotations = get_rotationsa(push_swap->a, push_swap->b->value);
+		a_rotations = get_rotations_a(push_swap->a, push_swap->b->value);
 		while (a_rotations != 0)
 		{
 			if (a_rotations < 0)

@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:33:40 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/10 18:35:56 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 00:46:28 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,86 +19,92 @@
 
 # include "structure.h"
 
-int				abs(int value);
+int			abs(int value);
 
-int				biggest_value(t_stack *stack);
+int			biggest_value(t_stack *stack);
 
-void			bubble_sort(t_push_swap *push_swap);
+void		bubble_sort(t_push_swap *push_swap);
 
-void			check_input(int argc, const char *argv[]);
+void		check_input(int argc, const char *argv[]);
 
-void			display_push_swap(t_push_swap *push_swap);
+void		display_push_swap(t_push_swap *push_swap);
 
-void			exit_with_error_message(char *message);
+void		exit_with_error_message(char *message);
 
-void			free_pushswap(t_push_swap *push_swap);
+void		free_pushswap(t_push_swap *push_swap);
 
-int				get_big_small(int value1, int value2, int smallest);
+int			get_big_small(int value1, int value2, int smallest);
 
-int				get_ideal_index(t_stack *b, int value);
+int			get_ideal_index(t_stack *b, int value);
 
-int				get_rotations(t_stack *b, int value);
+int			get_nb_moves2(int a_rotations, int b_rotations, int atot, int btot);
 
-int				index_biggest(t_stack *stack);
+int			get_rotations(t_stack *b, int value);
 
-int				index_smallest(t_stack *stack);
+int			index_biggest(t_stack *stack);
 
-t_push_swap		*init_push_swap(const char *argv[], int argc);
+int			index_smallest(t_stack *stack);
 
-int				is_finished(t_push_swap *push_swap);
+t_push_swap	*init_push_swap(const char *argv[], int argc);
 
-int				is_sorted(t_stack *stack);
+int			is_finished(t_push_swap *push_swap);
 
-long			my_atoi(char *str);
+int			is_sorted(t_stack *stack);
 
-int				nb_in_stack(t_stack	*stack);
+long		my_atoi(char *str);
 
-void			new_stack_back(t_stack **stack, int value);
+int			nb_in_stack(t_stack	*stack);
 
-void			new_stack_front(t_stack **stack, int value);
+void		new_stack_back(t_stack **stack, int value);
 
-void			push(t_stack **src, t_stack **dest);
+void		new_stack_front(t_stack **stack, int value);
 
-void			push_to_b(t_push_swap *push_swap, int index);
+void		push(t_stack **src, t_stack **dest);
 
-void			push_to_a(t_push_swap *push_swap);
+void		push_to_b(t_push_swap *push_swap, int index);
 
-void			reverse_rotate(t_stack **stack);
+void		push_to_b3(int *a_rotations, int *b_rots, int opp_a, int opp_b);
 
-void			rotate(t_stack **stack);
+void		push_to_b4(t_push_swap *push_swap, int a_rotations, int b_rots);
 
-int				smallest_value(t_stack *stack);
+void		push_to_a(t_push_swap *push_swap);
 
-void			sort(t_push_swap *push_swap);
+void		reverse_rotate(t_stack **stack);
 
-void			sort_for_3(t_push_swap *push_swap);
+void		rotate(t_stack **stack);
 
-void			swap(t_stack **stack);
+int			smallest_value(t_stack *stack);
 
-void			turk_sort(t_push_swap *push_swap);
+void		sort(t_push_swap *push_swap);
 
-int				value_index(t_stack *stack, int index);
+void		sort_for_3(t_push_swap *push_swap);
 
-void			sa(t_push_swap *push_swap);
+void		swap(t_stack **stack);
 
-void			sb(t_push_swap *push_swap);
+void		turk_sort(t_push_swap *push_swap);
 
-void			ss(t_push_swap *push_swap);
+int			value_index(t_stack *stack, int index);
 
-void			pa(t_push_swap *push_swap);
+void		sa(t_push_swap *push_swap);
 
-void			pb(t_push_swap *push_swap);
+void		sb(t_push_swap *push_swap);
 
-void			ra(t_push_swap *push_swap);
+void		ss(t_push_swap *push_swap);
 
-void			rb(t_push_swap *push_swap);
+void		pa(t_push_swap *push_swap);
 
-void			rr(t_push_swap *push_swap);
+void		pb(t_push_swap *push_swap);
 
-void			rra(t_push_swap *push_swap);
+void		ra(t_push_swap *push_swap);
 
-void			rrb(t_push_swap *push_swap);
+void		rb(t_push_swap *push_swap);
 
-void			rrr(t_push_swap *push_swap);
+void		rr(t_push_swap *push_swap);
+
+void		rra(t_push_swap *push_swap);
+
+void		rrb(t_push_swap *push_swap);
+
+void		rrr(t_push_swap *push_swap);
 
 #endif
