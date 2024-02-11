@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:33:40 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/11 00:46:28 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 01:44:17 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void		push_to_b(t_push_swap *push_swap, int index);
 
 void		push_to_b3(int *a_rotations, int *b_rots, int opp_a, int opp_b);
 
-void		push_to_b4(t_push_swap *push_swap, int a_rotations, int b_rots);
+void		push_to_b4(t_push_swap *push_swap, int *a_rotations, int *b_rots);
+
+void		push_to_b5(t_push_swap *push_swap, int b_rotations);
 
 void		push_to_a(t_push_swap *push_swap);
 

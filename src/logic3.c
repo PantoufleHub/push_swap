@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:47:43 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/11 00:53:34 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 01:35:07 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ int	get_nb_moves(t_push_swap *push_swap, int index)
 	a_tot = nb_in_stack(push_swap->a);
 	b_tot = nb_in_stack(push_swap->b);
 	nb_moves = get_nb_moves2(a_rotations, b_rotations, a_tot, b_tot);
-	// ft_printf("\nOop--\n");
-	// display_push_swap(push_swap);
-	// ft_printf("Index: %d, nbMoves:%d\n", index, nb_moves);
 	return (nb_moves);
 }
 
@@ -99,10 +96,7 @@ void	turk_sort(t_push_swap *push_swap)
 	pb(push_swap);
 	while (nb_in_stack(push_swap->a) > 3)
 		push_easiest(push_swap);
-	// ft_printf("\n-- Sorting for 3 --\n");
 	sort_for_3(push_swap);
-	// ft_printf("\n-- Pushing to A --\n");
-	// display_push_swap(push_swap);
 	push_to_a(push_swap);
 	rot = index_smallest(push_swap->a);
 	if (rot > nb_in_stack(push_swap->a) / 2)

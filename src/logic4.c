@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:57:17 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/11 01:29:14 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 01:43:16 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	push_to_b2(int *a_rotations, int *b_rotations, int atot, int btot)
 	int	opp_a;
 	int	opp_b;
 
-	// ft_printf("Entered b2\n");
-	// ft_printf("With values arot: %d, brot %d, atot: %d, btot: %d\n", *a_rotations, *b_rotations, atot, btot);
 	if (*a_rotations < 0 && *b_rotations < 0)
 		return ;
 	if (*a_rotations >= 0 && *b_rotations >= 0)
@@ -31,7 +29,6 @@ void	push_to_b2(int *a_rotations, int *b_rotations, int atot, int btot)
 		opp_b = *b_rotations - btot;
 	else
 		opp_b = btot - abs(*b_rotations);
-	// ft_printf("End b2 with arot: %d, brot %d, oppa: %d, oppb: %d\n", *a_rotations, *b_rotations, opp_a, opp_b);
 	push_to_b3(a_rotations, b_rotations, opp_a, opp_b);
 }
 
@@ -42,22 +39,16 @@ void	push_to_b(t_push_swap *push_swap, int index)
 	int	atot;
 	int	btot;
 
-	// ft_printf("\n -- Pushing to B -- \n");
-	// display_push_swap(push_swap);
 	atot = nb_in_stack(push_swap->a);
 	btot = nb_in_stack(push_swap->b);
 	a_rotations = index;
 	if (index > nb_in_stack(push_swap->a) / 2)
 		a_rotations -= nb_in_stack(push_swap->a);
 	b_rotations = get_rotations(push_swap->b, value_index(push_swap->a, index));
-	// ft_printf("Index: %d, arot:%d, brot:%d\n", index, a_rotations, b_rotations);
 	push_to_b2(&a_rotations, &b_rotations, atot, btot);
-	push_to_b4(push_swap, a_rotations, b_rotations);
-	// ft_printf("Index: %d, Arot: %d, Brot: %d\n", index, a_rotations, b_rotations);
+	push_to_b4(push_swap, &a_rotations, &b_rotations);
+	push_to_b5(push_swap, b_rotations);
 	pb(push_swap);
-	// ft_printf("After push\n");
-	// display_push_swap(push_swap);
-	// ft_printf("\n");
 }
 
 int	get_ideal_index_a(t_stack *a, int value)

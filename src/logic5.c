@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 22:42:48 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/11 01:28:22 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/11 01:43:00 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,33 +54,8 @@ int	get_nb_moves2(int a_rotations, int b_rotations, int atot, int btot)
 	return (nb_moves);
 }
 
-void	push_to_b4(t_push_swap *push_swap, int a_rotations, int b_rotations)
+void	push_to_b5(t_push_swap *push_swap, int b_rotations)
 {
-	while (a_rotations != 0)
-	{
-		if (a_rotations > 0)
-		{
-			if (b_rotations > 0)
-			{
-				rr(push_swap);
-				b_rotations--;
-			}
-			else
-				ra(push_swap);
-			a_rotations--;
-		}
-		if (a_rotations < 0)
-		{
-			if (b_rotations < 0)
-			{
-				rrr(push_swap);
-				b_rotations++;
-			}
-			else
-				rra(push_swap);
-			a_rotations++;
-		}
-	}
 	while (b_rotations != 0)
 	{
 		if (b_rotations > 0)
@@ -96,11 +71,39 @@ void	push_to_b4(t_push_swap *push_swap, int a_rotations, int b_rotations)
 	}
 }
 
+void	push_to_b4(t_push_swap *push_swap, int *a_rotations, int *b_rotations)
+{
+	while (*a_rotations != 0)
+	{
+		if (*a_rotations > 0)
+		{
+			if (*b_rotations > 0)
+			{
+				rr(push_swap);
+				*b_rotations -= 1;
+			}
+			else
+				ra(push_swap);
+			*a_rotations -= 1;
+		}
+		else if (*a_rotations < 0)
+		{
+			if (*b_rotations < 0)
+			{
+				rrr(push_swap);
+				*b_rotations += 1;
+			}
+			else
+				rra(push_swap);
+			*a_rotations += 1;
+		}
+	}
+}
+
 void	push_to_b3(int *a_rotations, int *b_rots, int opp_a, int opp_b)
 {
 	int	small;
 
-	// ft_printf("Entered b3:\n");
 	if (*a_rotations >= 0)
 	{
 		small = *a_rotations + abs(*b_rots);
@@ -123,5 +126,4 @@ void	push_to_b3(int *a_rotations, int *b_rots, int opp_a, int opp_b)
 		if (get_big_small(opp_a + *b_rots, small, 1) < small)
 			*a_rotations = opp_a;
 	}
-	// ft_printf("Values at end: arot: %d brot: %d small: %d\n", *a_rotations, *b_rots, small);
 }
